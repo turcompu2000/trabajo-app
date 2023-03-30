@@ -7,19 +7,19 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <title>Listado de paises!</title>
   </head>
   <body>
     <div class="container">
-      <h1>Listado de comunas</h1>
+      <h1>Listado de paises</h1>
       <a href="{{ route('paises.create') }}" class="btn btn-success">Add</a>
       <a href="{{route('municipios.menu')}}" class="btn btn-warning">Volver</a>
     <table class="table">
    <thead>
      <tr>
      <th scope="col">Code</th>
-     <th scope="col">Municipality</th>
-     <th scope="col">depa_codi</th>
+     <th scope="col">paises</th>
+     <th scope="col">pais_capi</th>
      <th scope="col">Actions</th>
       </tr>
    </thead>
@@ -30,6 +30,8 @@
           <td>{{ $pais->pais_nomb }}</td>
           <td>{{ $pais->pais_codi }}</td>
           <td> 
+            <a href="{{route('paises.edit',['pais'=>$pais->pais_codi]) }}"
+              class="btn btn-info">edit</a></li>
             <form action="{{route('paises.destroy',['pais'=>$pais->pais_capi])}}"
             method="POST" style="display: inline-block">
             @method('delete')
