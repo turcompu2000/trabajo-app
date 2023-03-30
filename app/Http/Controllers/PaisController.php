@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\pais;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Query\Builder;
 
 class PaisController extends Controller
 {
@@ -25,7 +27,10 @@ class PaisController extends Controller
      */
     public function create()
     {
-        //
+        $paises = DB::table('tb_pais')
+        ->orderBy('pais_nomb')
+        ->get();
+        return view('paises.new', ['paises'=>$paises]);
     }
 
     /**
@@ -36,7 +41,16 @@ class PaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pais = new pais();
+        $pais->pais_nomb=$request->name;
+        $pais->pais_codi=$request->code;     
+        $pais->save();
+
+        $paises = DB::table('tb_pais')
+        // ->join('tb_pais')
+        ->select('tb_pais.*')
+        ->get();
+        return view('paises.index', ['paises' => $paises]);
     }
 
     /**
