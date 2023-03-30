@@ -26,10 +26,16 @@
     <tbody>
       @foreach ($paises as $pais)
         <tr>
-          <th scope="row">{{$pais->pais_codi}}</th>
+          <th scope="row">{{$pais->pais_capi}}</th>
           <td>{{ $pais->pais_nomb }}</td>
-         <td>{{ $pais->pais_capi }}</td>
-          <td><span>Actions</span></td>
+          <td>{{ $pais->pais_codi }}</td>
+          <td> 
+            <form action="{{route('paises.destroy',['pais'=>$pais->pais_capi])}}"
+            method="POST" style="display: inline-block">
+            @method('delete')
+            @csrf
+            <input class="btn btn-danger" type="submit" value="delete">
+          </form></td>
           </tr>
       @endforeach
         </tbody>

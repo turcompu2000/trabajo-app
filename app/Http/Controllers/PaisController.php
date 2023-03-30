@@ -43,11 +43,12 @@ class PaisController extends Controller
     {
         $pais = new pais();
         $pais->pais_nomb=$request->name;
-        $pais->pais_codi=$request->code;     
+        $pais->pais_capi=$request->code; 
+        $pais->pais_=$request->name;  
+        
         $pais->save();
 
         $paises = DB::table('tb_pais')
-        // ->join('tb_pais')
         ->select('tb_pais.*')
         ->get();
         return view('paises.index', ['paises' => $paises]);
@@ -95,6 +96,13 @@ class PaisController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $paises = Pais::find($id);
+        $paises->delete();
+
+        $paises = DB::table('tb_pais')
+        ->select('tb_pais.*')
+        ->get();
+
+        return view('paises.index', ['paises' => $paises]);
     }
 }
