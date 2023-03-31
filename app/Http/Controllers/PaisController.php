@@ -43,9 +43,7 @@ class PaisController extends Controller
     {
         $pais = new pais();
         $pais->pais_nomb=$request->name;
-        $pais->pais_codi=$request->code; 
-        $pais->pais_capi=$request->nacion;
-
+        $pais->pais_capi=$request->code; 
         
         $pais->save();
 
@@ -93,8 +91,7 @@ class PaisController extends Controller
         $pais = new pais();
         $pais->pais_nomb=$request->name;
         $pais->pais_codi=$request->code;
-        $pais->pais_capi=$request->nacion;
-
+        
         $pais->save();
 
         $paises = DB::table('tb_pais')
