@@ -30,7 +30,7 @@
           <td>{{ $pais->pais_nomb }}</td>
           <td>{{ $pais->pais_codi }}</td>
           <td> 
-            <a href="{{route('paises.edit',['pais'=>$pais->pais_codi]) }}"
+            <a href="{{route('paises.edit',['pais'=>$pais->pais_capi]) }}"
               class="btn btn-info">edit</a></li>
             <form action="{{route('paises.destroy',['pais'=>$pais->pais_capi])}}"
             method="POST" style="display: inline-block">

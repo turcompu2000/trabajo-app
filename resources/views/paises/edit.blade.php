@@ -13,13 +13,13 @@
   <body>
     <div class="container">
         <h1>Edit commune</h1>  
-        <form method="POST" action="{{route('paises.update',['pais'=>$pais->pais_codi])}}">
+        <form method="POST" action="{{route('paises.update',['pais'=>$pais->pais_capi])}}">
           @method('put')
           @csrf
             <div class="mb-3">
               <label for="codigo" class="form-label">Id</label>
               <input type="text" class="form-control" id="id" aria-describedby="codigoHelp" name="id" 
-                   disabled="disabled" values="{{$pais->pais_codi}}">
+                   disabled="disabled" values="{{$pais->pais_nomb}}">
               <div id="codigoHelp" class="form-text">Commune Id</div>
             </div>
 
@@ -33,10 +33,10 @@
                 <option selected disabled value="">Choose one...</option>
                 
                 @foreach ($paises as $paiso)
-                   @if ($paiso->pais_codi == $pais->pais_codi)
+                   @if ($paiso->pais_codi == $paiso->pais_codi)
                        <option selected value="{{$paiso->pais_codi}}">{{$paiso->pais_nomb}}</option>
                   @else
-                        <option value="{{$paiso->pais_codi}}">{{$paiso->pais_nomb}}</option>
+                        <option value="{{$paiso->pais_codi}}">{{$paiso->pais_codi}}</option>
                   @endif
                 @endforeach
          </select>
