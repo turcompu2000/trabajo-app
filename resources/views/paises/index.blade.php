@@ -29,10 +29,9 @@
           <th scope="row">{{$pais->pais_capi}}</th>
           <td>{{ $pais->pais_nomb }}</td>
           <td>{{ $pais->pais_codi }}</td>
-          <td> 
-            <a href="{{route('paises.edit',['pais'=>$pais->pais_capi]) }}"
+          <td>             <a href="{{route('paises.edit',['pais'=>$pais->pais_codi]) }}"
               class="btn btn-info">edit</a></li>
-            <form action="{{route('paises.destroy',['pais'=>$pais->pais_capi])}}"
+            <form action="{{route('paises.destroy',['pais'=>$pais->pais_codi])}}"
             method="POST" style="display: inline-block">
             @method('delete')
             @csrf
